@@ -29,7 +29,41 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-let comp_choice = getComputerChoice();
-let player_choice = prompt("Enter choice: ").toLocaleLowerCase()
 
-console.log(playRound(player_choice, comp_choice))
+function game(){
+
+    let comp_ctr = 0;
+    let player_ctr = 0;
+
+    for(let i = 0; i < 5; i++){
+        let comp_choice = getComputerChoice();
+        let player_choice = prompt("Enter choice: ").toLocaleLowerCase()
+        let result = playRound(player_choice, comp_choice)
+
+        if(result.includes("Win")){
+            player_ctr++
+        }else if(result.includes("Lose")){
+            comp_ctr++
+        }else{
+            player_ctr++;
+            comp_ctr++;
+        }
+
+        console.log(player_ctr, comp_ctr)
+
+        console.log(result)
+    }
+
+    console.log(`Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`)
+
+    if(player_ctr < comp_ctr){
+        console.log("Computer Wins!")
+    }else if(player_ctr > comp_ctr){
+        console.log("Player Wins!")
+    }else{
+        console.log("Draw!")
+    }
+
+}
+
+game()
