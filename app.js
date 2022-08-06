@@ -30,6 +30,6 @@ function playRound(playerSelection, computerSelection){
 }
 
 let comp_choice = getComputerChoice();
-let player_choice = prompt("Enter choice: ")
+let player_choice = prompt("Enter choice: ").toLocaleLowerCase()
 
 playRound(player_choice, comp_choice)
