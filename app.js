@@ -30,61 +30,52 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-/*function game(){
-
-    let comp_ctr = 0;
-    let player_ctr = 0;
-
-    for(let i = 0; i < 5; i++){
-        let comp_choice = getComputerChoice();
-        let player_choice = prompt("Enter choice: ").toLocaleLowerCase()
-        let result = playRound(player_choice, comp_choice)
-
-        if(result.includes("Win")){
-            player_ctr++
-        }else if(result.includes("Lose")){
-            comp_ctr++
-        }else{
-            player_ctr++;
-            comp_ctr++;
-        }
-
-        console.log(player_ctr, comp_ctr)
-
-        console.log(result)
-    }
-
-    console.log(`Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`)
-
-    if(player_ctr < comp_ctr){
-        console.log("Computer Wins!")
-    }else if(player_ctr > comp_ctr){
-        console.log("Player Wins!")
-    }else{
-        console.log("Draw!")
-    }
-
-}
-
-game()*/
 
 btns = document.querySelectorAll('button');
-console.log(btns)
 
-btns.forEach(element => {
-    element.addEventListener('click', () => {
-        let comp_choice = getComputerChoice();
-        let player_choice = element.id;
+let comp_ctr = 0;
+let player_ctr = 0;
 
+    btns.forEach(element => {
+            element.addEventListener('click', () => {
+            
+            let comp_choice = getComputerChoice();
+            let result = playRound(element.id, comp_choice)
+
+            if(result.includes("Win")){
+                player_ctr++
+            }else if(result.includes("Lose")){
+                    comp_ctr++
+            }else{
+                player_ctr++;
+                comp_ctr++;
+            }
+
+            console.log(player_ctr, comp_ctr)
+
+            console.log(result)
+            
+
+                
+            let container = document.querySelector('.container');
+            container.appendChild(div)
+            
+
+
+            /*console.log(`Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`)
+            if(player_ctr < comp_ctr){
+                console.log("Computer Wins!")
+            }else if(player_ctr > comp_ctr){
+                console.log("Player Wins!")
+            }else{
+                console.log("Draw!")
+            }*/
+
+            })
         let div = document.createElement('div');
         div.classList.add('result');
-        
-        let container = document.querySelector('.container');
-        container.appendChild(div)
-
-        div.innerText = playRound(player_choice, comp_choice);
-        console.log(playRound(player_choice, comp_choice));
-
-    })
+        div.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`;
+        });
     
-});
+    
+
