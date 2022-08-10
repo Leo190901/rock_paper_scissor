@@ -30,7 +30,7 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-function game(){
+/*function game(){
 
     let comp_ctr = 0;
     let player_ctr = 0;
@@ -66,4 +66,25 @@ function game(){
 
 }
 
-game()
+game()*/
+
+btns = document.querySelectorAll('button');
+console.log(btns)
+
+btns.forEach(element => {
+    element.addEventListener('click', () => {
+        let comp_choice = getComputerChoice();
+        let player_choice = element.id;
+
+        let div = document.createElement('div');
+        div.classList.add('result');
+        
+        let container = document.querySelector('.container');
+        container.appendChild(div)
+
+        div.innerText = playRound(player_choice, comp_choice);
+        console.log(playRound(player_choice, comp_choice));
+
+    })
+    
+});
