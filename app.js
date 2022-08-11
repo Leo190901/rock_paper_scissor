@@ -39,6 +39,11 @@ let player_ctr = 0;
     btns.forEach(element => {
             element.addEventListener('click', () => {
             
+            let container = document.querySelector('.container');
+            let div = document.createElement('div');
+            div.style.cssText = 'font-weight: bold';
+            let p = document.createElement('p');
+            
             let comp_choice = getComputerChoice();
             let result = playRound(element.id, comp_choice)
 
@@ -52,29 +57,30 @@ let player_ctr = 0;
             }
 
             console.log(player_ctr, comp_ctr)
-
             console.log(result)
-            
 
-                
-            let container = document.querySelector('.container');
-            container.appendChild(div)
-            
+            p.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`;
+            container.appendChild(p);
 
-
-            /*console.log(`Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`)
-            if(player_ctr < comp_ctr){
-                console.log("Computer Wins!")
-            }else if(player_ctr > comp_ctr){
-                console.log("Player Wins!")
-            }else{
-                console.log("Draw!")
-            }*/
-
+            if(comp_ctr >= 5 && player_ctr >= 5){
+                div.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}   ==>    DRAW!`;
+                container.appendChild(div)
+                comp_ctr = 0;
+                player_ctr = 0;
+            }
+            else if(comp_ctr >= 5){
+                div.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}   ==>    YOU LOSE!`;
+                container.appendChild(div)
+                comp_ctr = 0;
+                player_ctr = 0;
+            }
+            else if(player_ctr >= 5){
+                div.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}   ==>    YOU WIN!`;
+                container.appendChild(div)
+                comp_ctr = 0;
+                player_ctr = 0;
+            }
             })
-        let div = document.createElement('div');
-        div.classList.add('result');
-        div.innerText = `Score:     Player: ${player_ctr}   Computer: ${comp_ctr}`;
         });
     
     
